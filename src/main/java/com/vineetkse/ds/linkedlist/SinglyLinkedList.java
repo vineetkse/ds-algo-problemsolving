@@ -86,16 +86,16 @@ public class SinglyLinkedList<T extends Comparable<T>> {
         return count == 0;
     }
 
-    public void traverse() {
-        List<T> listOfNodes = toList();
+    public void traverse(Node node) {
+        List<T> listOfNodes = toList(node);
 
         System.out.println(listOfNodes);
     }
 
-    public List<T> toList() {
+    public List<T> toList(Node node) {
         List<T> listOfNodes = new ArrayList<T>();
 
-        Node current = head;
+        Node current = node;
 
         while(current != null) {
             listOfNodes.add(current.data);
@@ -106,7 +106,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
     }
 
     public T[] toArray() {
-        Object[] array = (Object[]) toList().toArray();
+        Object[] array = (Object[]) toList(head).toArray();
 
         return (T[]) array;
     }
@@ -177,9 +177,5 @@ public class SinglyLinkedList<T extends Comparable<T>> {
         list.add(11, 1);
         list.add(1, 2);
         list.add(12, 1);
-
-        list.traverse();
-
-        System.out.println(list.indexOf(11));
     }
 }
